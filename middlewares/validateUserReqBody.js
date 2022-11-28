@@ -58,11 +58,11 @@ exports.validateSignInReq = async (req, res, next) => {
     */
     const user = await userModel.findOne({ email: req.body.email });
     if (!user) {
-        return res.status(400).send("Email doesnot Exist");
+        return res.status(400).send("Email does not Exist");
     }
     const isPasswordValid = bcrypt.compareSync(req.body.password, user.password);
     if (!isPasswordValid) {
-        return res.status(400).send("Password doesnot match");
+        return res.status(400).send("Password does not match");
     }
 
     req.user = user;
