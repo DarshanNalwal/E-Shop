@@ -20,3 +20,21 @@ exports.verifyToken = (req, res, next) => {
     });
     next();
 }
+
+exports.verifyAdmin = (req, res, next) => {
+
+    if (req.role !== "ADMIN") {
+        return res.status(401).json("You are not authorised to access this endpoint!")
+    }
+
+    next();
+}
+
+exports.verifyUser = (req, res, next) => {
+
+    if (req.role !== "USER") {
+        return res.status(401).json("You are not authorised to access this endpoint!")
+    }
+
+    next();
+}
